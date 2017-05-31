@@ -37,15 +37,16 @@ public class MyApplication extends Application<MyConfiguration> {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-        myargs[0] = "server";
-        myargs[1] = "C:\\Users\\Jano\\Documents\\NetBeansProjects\\ProjektDropWizard\\src\\main\\java\\com\\mycompany\\projektdropwizard\\configuration.yml";
+       // myargs[0] = "server";
+       // myargs[1] = "C:\\Users\\Jano\\Documents\\NetBeansProjects\\ProjektDropWizard\\src\\main\\java\\com\\mycompany\\projektdropwizard\\configuration.yml";
         org.hibernate.cfg.Configuration conf = new org.hibernate.cfg.Configuration();
         conf.configure();
 
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
         buildSessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
 
-        new MyApplication().run(myargs);
+        new MyApplication().run(args);
+      //  new MyApplication().run(myargs);
 
     }
 

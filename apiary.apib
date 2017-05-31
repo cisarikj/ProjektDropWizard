@@ -1,0 +1,167 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# Polls API
+
+
+## Device [/device]
+
+### Device list [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id":1,
+                "name": "Arduino",
+                "ip": "192.168.1.100",
+            },
+            {
+                    "id":2,
+                "name": "Raspbberry",
+                "ip": "192.168.1.110",
+                ]
+            }
+        ]
+
+### Add new device [POST]
+
+
+
++ Request (application/json)
+
+        {
+            "name": "Cisco",
+            "ip": "192.168.1.1"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "name":"cisco",
+                "ip":"192.168.1.1"
+            }
+            
+## Device [/device/{name}]
+
++ Parameters
+    + name (required, String, `arduino`) ... Device name
+
+### One device [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+            "id":1,
+                "name":"arduino",
+                "ip": "192.168.1.100",
+                
+            }
+        ]
+        
+## User [/user]
++ Parameters
+    + name (required, String, `admin`) ... User name
+    + password (required, String, `admin`) ... User password
+    + role (required, String, `ADMIN`) ... Userrole
+    
+### User list [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+            "id":1,
+                "name":"admin",
+                "password": "admin",
+                "role": "ADMIN"
+                
+            }
+        ]
+        
+### Add user [POST]
+
+
++ Request (application/json)
+
+        {
+            "name": "admin",
+            "password": "admin",
+            "role":"ADMIN"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /user
+
+    + Body
+
+            {
+                "name":"admin",
+                "password":"admin",
+                "role": "ADMIN"
+            }
+            
+## Data [/data]
+
++ Parameters
+    + date (required, String, `2017-05-25 19:54:47`) ... Date
+    + data (required, String, `24`) ... Data
+    + device (required, String, `arduino`) ... Device
+    + info (required, String, `temp`) ... sensor
+    
+### All data [GET]
++ Response 200 (application/json)
+
+        [
+            {
+                "id":1,
+                "date":"2017-05-25 19:54:47",
+                "data": "24",
+                "device": "arduino",
+                "info":"temp"
+            },
+            {
+                     "id":2,
+                "date":"2017-05-25 19:57:47",
+                "data": "1",
+                "device": "raspberry",
+                "info":"motion-detection"
+            }
+        ]
+### Add data [POST]
+
++ Request (application/json)
+
+        {
+               "id":1,
+                "date":"2017-05-25 19:54:47",
+                "data": "24",
+                "device": "arduino",
+                "info":"temp"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /data
+
+    + Body
+
+            {
+                   "id":1,
+                "date":"2017-05-25 19:54:47",
+                "data": "24",
+                "device": "arduino",
+                "info":"temp"
+            }

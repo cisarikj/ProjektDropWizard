@@ -67,7 +67,7 @@ public class UserResource {
         Session session = MyApplication.buildSessionFactory.openSession();
         Transaction beginTransaction = session.beginTransaction();
 
-        Query query = session.createQuery("from UserDB");
+        Query query = session.createQuery("from User");
         List<User> list = query.list();
 
         session.getTransaction().commit();
